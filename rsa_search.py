@@ -9,7 +9,7 @@ def rsa_key_search(path):
         result = re.findall(pattern, path)
         if result:
             with open("rsa_keys.txt", "w") as s:
-                s.write(result)
+                s.write(', '.join(result))
                 s.close()
                 f.close()
                 input("Data saved succesfully!\nPress anything to close the script.")
