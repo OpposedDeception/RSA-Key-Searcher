@@ -1,14 +1,19 @@
 import re
 import sys
-from colorama import Fore
+from colorama import Fore 
+from os import getcwd 
+import os.path
 
 pattern = r"[a-zA-Z0-9+/=\n]+"
 
 def rsa_key_search(path):
-    with open("{path}", "w") as f:
+    directory = getcwd()
+    name_of_file = "rsa_keys"
+    total = os.path.join(directory, name_of_file+" .txt")
+    with open(path, "w") as f:
         result = re.findall(pattern, path)
         if result:
-            with open("rsa_keys.txt", "w") as s:
+            with open(total, "w") as s:
                 s.write(', '.join(result))
                 s.close()
                 f.close()
